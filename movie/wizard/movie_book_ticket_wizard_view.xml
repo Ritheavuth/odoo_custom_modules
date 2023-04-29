@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record model="ir.ui.view" id="movie_book_ticket_view_wiz">
+        <field name="name">movie.book.ticket.view.wiz</field>
+        <field name="model">movie.book.ticket.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="user_id" readonly="1"/>
+                    <field name="booking_date" readonly="1"/>
+
+
+                </group>
+                <group>
+                    <field name="movie_id"/>
+                    <field name="date"/>
+                    <field name="ticket_count"/>
+                    <field name="total_price" readonly="1"/>
+                </group>
+
+                <footer>
+                    <button string="Confirm" type="object" name="action_confirm" class="btn btn-primary"/>
+                    <button string="Cancel" type="object" name="action_cancel" class="btn btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_movie_book_ticket">
+        <field name="name">action.movie.book.ticket</field>
+        <field name="res_model">movie.book.ticket.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="book_ticket_sub_menu" name="Book a Ticket" sequence="2" action="action_movie_book_ticket" parent="movie_root"/>
+</odoo>

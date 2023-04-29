@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="ticket_receipt_pdf_template_report">
+        <t-call t-call="web.html_container">
+            <t-call t-call="web.external_layout">
+                <table>
+                    <tr>
+                        <td><p>Name: <t t-esc="form_data['user_id'][1]"/></p></td>
+                        <td></td>
+                        <td><p>Booking Date: <t t-esc="form_data['booking_date']"/></p></td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <th>Movie</th>
+                        <th>Ticket Price</th>
+                        <th>Number of Tickets</th>
+                        <th>Total Price</th>
+                    </tr>
+                    <tr>
+                        <td><t t-esc="form_data['movie_id'][1]"/></td>
+                        <td>$ 3.00</td>
+                        <td><t t-esc="form_data['ticket_count']"/></td>
+                        <td><t t-esc="form_data['total_price']"/></td>
+                    </tr>
+                </table>
+            </t-call>
+        </t-call>
+    </template>
+
+    <record id="movie_book_receipt" model="ir.actions.report">
+        <field name="name">Receipt</field>
+        <field name="model">movie.book.ticket.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">movie.ticket_receipt_pdf_template_report</field>
+        <field name="report_file">movie.ticket_receipt_pdf_template_report</field>
+        <field name="print_report_name">'Receipt'</field>
+        <field name="binding_model_id" ref="movie.model_movie_book"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

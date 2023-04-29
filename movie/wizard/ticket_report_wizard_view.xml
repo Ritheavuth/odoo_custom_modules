@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="ticket_report_view_wiz" model="ir.ui.view">
+        <field name="name">ticket.report.view.wiz</field>
+        <field name="model">ticket.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+
+                <group>
+                    <field name="movie_id"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </group>
+                <footer>
+                    <button string="Print" class="btn btn-primary" type="object" name="action_print_report" />
+                    <button string="Cancel" class="btn btn-primary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ticket_report" model="ir.actions.act_window">
+        <field name="name">action.ticket.report</field>
+        <field name="res_model">ticket.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="ticket_report_menu" name="Tickets Report" groups="movie.group_movie_admin" sequence="1" action="action_ticket_report" parent="report_sub_menu"/>
+</odoo>

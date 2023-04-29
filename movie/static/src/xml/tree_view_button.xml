@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+    <t t-extend="ListView.buttons">
+        <t t-jquery="div.o_list_buttons" t-operation="append">
+            <button type="button" t-if='widget.modelName == "movie.movie"' class="oe_new_custom_button btn btn-primary">
+                Show Now-Playing Movies
+            </button>
+        </t>
+    </t>
+</templates>

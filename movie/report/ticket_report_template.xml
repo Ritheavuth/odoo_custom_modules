@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<odoo>
+    <template id="ticket_report_pdf_template_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="oe_structure"/>
+                <div class="text-center">
+                    <h2>Tickets Booking Report</h2>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            Movie: <t t-esc="form_data['movie_id'][1]"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            From <t t-esc="form_data['date_from']"/> to <td t-esc="form_data['date_from']"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Total Tickets: <t t-esc="total_tickets"/>
+                        </h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Total Price: <t t-esc="total_price"/>
+                        </h4>
+                    </td>
+                </tr>
+            </table>
+        </t>
+    </t>
+</template>
+
+<record id="movie_book_ticket_report" model="ir.actions.report">
+    <field name="name">Ticket Report PDF</field>
+    <field name="model">movie.book</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">movie.ticket_report_pdf_template_report</field>
+    <field name="report_file">movie.ticket_report_pdf_template_report</field>
+    <field name="print_report_name">'Tickets Report'</field>
+    <field name="binding_model_id" ref="movie.model_movie_book"/>
+    <field name="binding_type">report</field>
+</record>
+</odoo>

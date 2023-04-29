@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_movie_movie,access_movie.movie,model_movie_movie,,1,1,1,0
+access_movie_book,access_movie.book,model_movie_book,,1,1,1,0
+access_movie_book_ticket,access_movie.book.ticket.wizard,model_movie_book_ticket_wizard,,1,1,1,0
+access_ticket_report,access_ticket.report.wizard,model_ticket_report_wizard,base.group_system,1,1,1,0

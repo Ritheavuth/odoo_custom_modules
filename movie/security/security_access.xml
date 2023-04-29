@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record model="res.groups" id="group_movie_admin">
+        <field name="name">Movie / Admin</field>
+    </record>
+    <record model="res.groups" id="group_movie_customer">
+        <field name="name">Movie / Customer</field>
+    </record>
+
+</odoo>

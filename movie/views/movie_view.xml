@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="movie_list_view" model="ir.ui.view">
+        <field name="name">movie.list.view</field>
+        <field name="model">movie.movie</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false" delete="false" duplicate="false">
+                <field name="image" widget="image"/>
+                <field name="price"/>
+                <field name="name"/>
+                <field name="genres"/>
+                <field name="release_date"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="movie_form_view" model="ir.ui.view">
+        <field name="name">movie.form.view</field>
+        <field name="model">movie.movie</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="fetch_movie_data" string="Show Now Playing Movies" type="object" class="btn btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" label="Title"/>
+                        <field name="genres"/>
+                        <field name="release_date"/>
+                        <field name="description"/>
+                    </group>
+                    <group>
+                        <field name="image" widget="image"/>
+                        <field name="price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="ticket_list_view" model="ir.ui.view">
+        <field name="name">ticket.list.view</field>
+        <field name="model">movie.book</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="user_id"/>
+                <field name="movie_id"/>
+                <field name="ticket_count"/>
+                <field name="booking_date"/>
+                <field name="total_price" />
+                <field name="status" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="ticket_form_view" model="ir.ui.view">
+        <field name="name">ticket.form.view</field>
+        <field name="model">movie.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="user_id" readonly="1"/>
+                        <field name="movie_id" readonly="1"/>
+                        <field name="ticket_count" readonly="1"/>
+                        <field name="booking_date" readonly="1"/>
+                        <field name="total_price" readonly="1"/>
+                        <field name="status" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_movie_list" model="ir.actions.act_window">
+        <field name="name">Movie List</field>
+        <field name="res_model">movie.movie</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_ticket_list" model="ir.actions.act_window">
+        <field name="name">Tickets</field>
+        <field name="res_model">movie.book</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="movie_root" name="Movie" action="action_movie_list"/>
+    <menuitem id="movie_sub_menu" name="Movie" sequence="1" parent="movie_root"/>
+    <menuitem id="ticket_sub_menu" name="Tickets" sequence="3" action="action_ticket_list" parent="movie_root"/>
+    <menuitem id="report_sub_menu" name="Reports" groups="movie.group_movie_admin" sequence="4" parent="movie_root"/>
+    <menuitem id="movie_list_menu" name="Movie List" action="action_movie_list" parent="movie_sub_menu"/>
+
+</odoo>
